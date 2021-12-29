@@ -109,7 +109,7 @@ export default function Footer() {
                                         </Link>
                                     </li>
                                     <li className="item-policy">
-                                        <Link href="#">
+                                        <Link href="/chinh-sach-bao-hanh">
                                             <span>Chính sách bảo hành</span>
                                         </Link>
                                     </li>
