@@ -26,12 +26,7 @@ const productData2 = {
     oldPrice: 120300,
     status: "sale",
 }
-const datatest = {
-    quantity: 5,
-    urlImg: "https://bizweb.dktcdn.net/thumb/large/100/367/937/products/2-4d4650c2-dfd4-4467-bcb4-205c692552e1.jpg?v=1615519760717",
-    title: "Cửa lưới chống muỗi loại to to to",
-    price: 100000,
-}
+
 
 export default function Home() {
     console.log("HOme")
