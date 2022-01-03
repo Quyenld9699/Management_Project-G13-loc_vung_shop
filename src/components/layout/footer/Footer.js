@@ -109,27 +109,27 @@ export default function Footer() {
                                         </Link>
                                     </li>
                                     <li className="item-policy">
-                                        <Link href="#">
+                                        <Link href="/chinh-sach-bao-hanh">
                                             <span>Chính sách bảo hành</span>
                                         </Link>
                                     </li>
                                     <li className="item-policy">
-                                        <Link href="#">
+                                        <Link href="/chinh-sach-doi-tra">
                                             <span>Chính sách đổi trả</span>
                                         </Link>
                                     </li>
                                     <li className="item-policy">
-                                        <Link href="#">
+                                        <Link href="/chinh-sach-thanh-toan">
                                             <span>Chính sách thanh toán</span>
                                         </Link>
                                     </li>
                                     <li className="item-policy">
-                                        <Link href="#">
+                                        <Link href="/quy-dinh-su-dung">
                                             <span>Quy định sử dụng</span>
                                         </Link>
                                     </li>
                                     <li className="item-policy">
-                                        <Link href="#">
+                                        <Link href="/huong-dan-mua-hang">
                                             <span>Hướng dẫn mua hàng</span>
                                         </Link>
                                     </li>
