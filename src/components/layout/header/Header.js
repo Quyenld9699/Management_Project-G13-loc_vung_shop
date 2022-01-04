@@ -1,46 +1,48 @@
-import React, { useState } from "react"
-import { Breadcrumb, Container } from "react-bootstrap"
-import Link from "next/link"
-import Image from "next/image"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBars, faCaretDown, faSearch } from "@fortawesome/free-solid-svg-icons"
-import { ImagesPath } from "src/constants/ImagesPath"
-import { danhmuc } from "src/constants/danhmuc"
-import { useRouter } from "next/router"
-import SwitchLoginLogout from "./login-out/SwitchLoginLogout"
-import { useSelector } from "react-redux"
+import React, { useState } from "react";
+import { Breadcrumb, Container } from "react-bootstrap";
+import Link from "next/link";
+import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faCaretDown, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { ImagesPath } from "src/constants/ImagesPath";
+import { useRouter } from "next/router";
+import SwitchLoginLogout from "./login-out/SwitchLoginLogout";
+import { useSelector } from "react-redux";
 
 export default function Header(props) {
-    const route = useRouter().route
-    const { titlePage, breadcrumb } = props
-    const subMenu = useSelector((stores) => stores.menuSlice.value)
+    const route = useRouter().route;
+    const { titlePage, breadcrumb } = props;
+    const subMenu = useSelector((stores) => stores.menuSlice.value);
+    const shopInfor = useSelector((stores) => stores.shopSlice.value);
     return (
         <header className="header">
             <Container>
                 <div className="header-top">
                     <div className="contact">
-                        <Link href={{ pathname: "tel:0962020446" }} passHref>
+                        <Link href={{ pathname: `tel:${shopInfor?.data?.phone}` }} passHref>
                             <a className="contact-item">
                                 <div className="contact-item-icon">
                                     <Image src={ImagesPath.phoneIcon} alt="phone" />
                                 </div>
-                                <div className="contact-item-title">0962.020.446</div>
+                                <div className="contact-item-title">{shopInfor?.data?.phone}</div>
                             </a>
                         </Link>
-                        <Link href={{ pathname: "mailto:sales@giangminhviet.com" }} passHref>
-                            <a target="_blank" data-tip="Mail: sales@giangminhviet.com" className="contact-item">
+                        <Link href={{ pathname: `mailto:${shopInfor?.data?.email}` }} passHref>
+                            <a target="_blank" data-tip={`Mail: ${shopInfor?.data?.email}`} className="contact-item">
                                 <div className="contact-item-icon">
-                                    <Image src={ImagesPath.emailIcon} alt="phone" />
+                                    <Image src={ImagesPath.emailIcon} alt="email" />
                                 </div>
-                                <div className="contact-item-title">manhremvuonghong@gmail.com</div>
+                                <div className="contact-item-title">{shopInfor?.data?.email}</div>
                             </a>
                         </Link>
-                        <Link href={{ pathname: "mailto:sales@giangminhviet.com" }} passHref>
-                            <a style={{ float: "right" }} target="_blank" data-tip="Mail: sales@giangminhviet.com" className="contact-item">
+                        <Link href="#" passHref>
+                            <a style={{ float: "right" }} className="contact-item">
                                 <div className="contact-item-icon">
                                     <Image src={ImagesPath.listIcon} alt="phone" />
                                 </div>
-                                <div className="contact-item-title">Kiểm tra đơn hàng</div>
+                                <Link href="/kiem-tra-don-hang" passHref>
+                                    <div className="contact-item-title">Kiểm tra đơn hàng</div>
+                                </Link>
                             </a>
                         </Link>
                     </div>
@@ -55,15 +57,15 @@ export default function Header(props) {
                             <FontAwesomeIcon icon={faBars} />
                         </label>
                     </div>
-                    <div className="header-mid-logo">
-                        <img src={ImagesPath.LOGO}></img>
+                    <div className="header-mid-logo" style={{ marginTop: "-53px" }}>
+                        <Image width={"90px"} height={90} src={ImagesPath.LOGO}></Image>
                     </div>
                     <SwitchLoginLogout />
                 </div>
             </Container>
             <div className="header-bottom-search">
                 <div>
-                    <input type="text" placeholder="Tìm kiếm sản phẩm..."></input>
+                    <input type="text" name="search" placeholder="Tìm kiếm sản phẩm..."></input>
                     <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
                 </div>
             </div>
@@ -88,7 +90,7 @@ export default function Header(props) {
                                     <Link key={"danhmucmenu" + index} href={item.urlPage}>
                                         <span>{item.title}</span>
                                     </Link>
-                                )
+                                );
                             })}
                         </div>
                     </div>
@@ -111,11 +113,11 @@ export default function Header(props) {
                                 <Breadcrumb.Item key={"bread" + index} href={item.url}>
                                     {item.title}
                                 </Breadcrumb.Item>
-                            )
+                            );
                         })}
                     </Breadcrumb>
                 </div>
             </div>
         </header>
-    )
+    );
 }

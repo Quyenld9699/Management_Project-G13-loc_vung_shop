@@ -9,23 +9,8 @@ import ProductDetail from "src/components/pages/san-pham/chi-tiet-san-pham/Produ
 import TabsInfor from "src/components/pages/san-pham/tabsInfor/TabsInfor";
 import { productService } from "./../../src/services/product/index";
 
-const productData = {
-    urlImg: "https://bizweb.dktcdn.net/100/367/937/themes/740363/assets/col1.jpg?1630998054887",
-    urlProduct: "/san-pham?product_id=jfdhjsdkfhhfkfhkjsdhfjkdhfjhf",
-    title: "Tiện ích nhà bếp",
-    curPrice: 120000,
-    status: "new",
-};
-const productData2 = {
-    urlImg: "https://bizweb.dktcdn.net/100/367/937/themes/740363/assets/col1.jpg?1630998054887",
-    urlProduct: "/san-pham?product_id=cainaymoilam",
-    title: "Tiện ích nhà bếp",
-    curPrice: 120000,
-    oldPrice: 120300,
-    status: "sale",
-};
-
 export default function SanPham(props) {
+    console.log(props);
     const { product, response, relatedProducts } = props;
     const breadcrumb = [
         {
@@ -37,16 +22,16 @@ export default function SanPham(props) {
             url: "/san-pham?product=" + product,
         },
     ];
-    console.log(relatedProducts);
+
     return (
         <>
             <Head>
                 <title>{breadcrumb[1].title}</title>
             </Head>
             <Layout titlePage={breadcrumb[1].title} breadcrumb={breadcrumb}>
-                <Container className="san_pham">
+                <Container className="san_pham" style={{ marginBottom: "60px" }}>
                     <ProductDetail product={response.data} />
-                    <TabsInfor />
+                    <TabsInfor product={response.data} />
                     <div>
                         <div className="box_title">
                             <h4 style={{ textAlign: "center" }}>Sản phẩm liên quan</h4>
@@ -65,22 +50,25 @@ export default function SanPham(props) {
     );
 }
 
-export async function getServerSideProps(context) {
-    const { resolvedUrl, query, params } = context;
+SanPham.getInitialProps = async (context) => {
+    const { asPath, query, params } = context;
     const { product = "Không xác định" } = query;
     try {
         const productID = Number(query.product.split("-")[0]);
-        const token = cookies(context).auth;
-        const response = await productService.getDetailProduct(productID, token);
-        const relatedProducts = await productService.getListProduct({ limit: 12, offset: 0, collectionId: response.data.collections[0] || "", createdAt: "DESC" }, token);
-        console.log({ resolvedUrl, query, params, response });
+
+        const response = await productService.getDetailProduct(productID);
+        const relatedProducts = await productService.getListProduct({
+            limit: 12,
+            offset: 0,
+            collectionId: response.data.collections[0] || "",
+            status: "active",
+            createdAt: "DESC",
+        });
 
         return {
-            props: {
-                product,
-                response,
-                relatedProducts,
-            },
+            product,
+            response,
+            relatedProducts,
         };
     } catch (error) {
         console.log(error);
@@ -88,4 +76,4 @@ export async function getServerSideProps(context) {
             notFound: true,
         };
     }
-}
+};

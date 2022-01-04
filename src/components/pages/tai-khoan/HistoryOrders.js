@@ -1,21 +1,26 @@
-import React from "react";
-import { Row } from "react-bootstrap";
-import { Col } from "react-bootstrap";
+import React, { useState } from "react";
+import { useEffect } from "react";
+import CardHistoryOrder from "src/components-share/Card/CardHistoryOrder/CardHistoryOrder";
+import { userService } from "./../../../services/user/index";
 
 export default function HistoryOrders() {
+    const [listHistoryOrder, setListHistoryOrder] = useState([]);
+    useEffect(() => {
+        (async () => {
+            const res = await userService.getUserOrders();
+            console.log(res);
+            setListHistoryOrder(res.data);
+        })();
+    }, []);
+
     return (
         <>
             <h4 className="box_title">Lịch sử đặt hàng</h4>
-            <div className="history_orders">
-                <div className="table_data">
-                    <Row className="table_header">
-                        <Col>Đơn hàng</Col>
-                        <Col>Ngày</Col>
-                        <Col>Địa chỉ nhận</Col>
-                        <Col>Giá trị</Col>
-                        <Col>TT thanh toán</Col>
-                        <Col>TT vận chuyển</Col>
-                    </Row>
+            <div>
+                <div>
+                    {listHistoryOrder.map((item, index) => {
+                        return <CardHistoryOrder key={"historycard" + index} data={item} />;
+                    })}
                 </div>
             </div>
         </>
