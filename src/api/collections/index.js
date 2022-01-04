@@ -6,15 +6,15 @@ export const apiGetCollection = async (params) => {
         const response = await GET("/collections", params, { isFullPath: false });
         return {
             state: REQUEST_STATE.SUCCESS,
-            total: response.total,
             data: response.result,
+            total: response.total,
         };
     } catch (error) {
         console.log("error", error);
         return {
             state: REQUEST_STATE.ERROR,
-            total: 0,
             data: [],
+            total: 0,
         };
     }
 };
