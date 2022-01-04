@@ -1,29 +1,43 @@
 @import "base_variables";
 @import "base_styles";
+@import "keyframes";
 
-// @import "../../components/layout/layout";
-// @import "../../components/layout/header/header";
-// @import "../../components/layout/footer/footer";
-// @import "../../components/layout/sidebar/sidebar";
+@import "../../components/layout/layout";
+@import "../../components/layout/header/header";
+@import "../../components/layout/footer/footer";
+@import "../../components/layout/sidebar/sidebar";
 
-// @import "../../components-share/Card/CardProduct/card_product";
-// @import "../../components-share/Card/CardReview/card_review";
-// @import "../../components-share/Carousel/carousel_products";
-// @import "../../components-share/Modal/ModalReviewProduct/modal_review_product";
-// @import "../../components-share/Modal/ModalReviewCart/modal_review_cart";
-// @import "../../components-share/Cart/cart_item/cart_item";
-// @import "../../components-share/Modal/modal_layout";
-// @import "../../components-share/Cart/cart_item_review/cart_item_review";
+@import "../../components-share/Card/CardHistoryOrder/card_history_order";
+@import "../../components-share/Card/CardNews/card_news";
+@import "../../components-share/Card/CardProduct/card_product";
+@import "../../components-share/Card/CardReview/card_review";
+@import "../../components-share/Carousel/carousel_products";
+@import "../../components-share/Modal/ModalReviewProduct/modal_review_product";
+@import "../../components-share/Modal/ModalReviewCart/modal_review_cart";
+@import "../../components-share/Cart/cart_item/cart_item";
+@import "../../components-share/Modal/modal_layout";
+@import "../../components-share/Cart/cart_item_review/cart_item_review";
 
-// @import "./pages/homepage";
-// @import "./pages/loginpage";
-// @import "./pages/cartpage";
-// @import "./pages/chinhsachbaomat";
-// @import "./pages/chinhsachvanchuyen";
-// @import "./pages/chinhsachbaohanh";
-// @import "./pages/chinhsachdoitra";
-// @import "./pages/chinhsachthanhtoan";
-// @import "./pages/quydinhsudung";
-// @import "./pages/huongdanmuahang";
-// @import "./pages/lienhepage";
-// @import "./pages/gioithieupage";
+@import "./pages/homepage";
+
+@import "./pages/loginpage";
+
+@import "./pages/cartpage";
+@import "./pages/tin_tuc";
+@import "./pages/sanpham";
+@import "../../components/pages/san-pham/chi-tiet-san-pham/product_detail";
+
+@import "./pages/checkout";
+
+@import "./pages/taikhoan";
+@import "./pages/chinhsachbaomat";
+@import "./pages/chinhsachvanchuyen";
+@import "./pages/chinhsachbaohanh";
+@import "./pages/chinhsachdoitra";
+@import "./pages/chinhsachthanhtoan";
+@import "./pages/quydinhsudung";
+@import "./pages/huongdanmuahang";
+@import "./pages/lienhepage";
+@import "./pages/gioithieupage";
+
+@import "../../components/pages/checkout/cart_and_checkout";

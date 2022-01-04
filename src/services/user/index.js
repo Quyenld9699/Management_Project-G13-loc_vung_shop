@@ -9,6 +9,7 @@ import {
     apiGetUserMeta,
     apiGetUserOrders,
     apiUpdateUserInfor,
+    apiUpdateStateOrders,
     apiUpdateUserMetaById,
     apiUploadImg,
 } from "./../../api/user/index";
@@ -93,6 +94,11 @@ export const userService = {
     },
     getUserOrders: function (params) {
         return apiGetUserOrders(params).then((response) => {
+            return response;
+        });
+    },
+    updateOrderState: function (id, status) {
+        return apiUpdateStateOrders(id, status).then((response) => {
             return response;
         });
     },
