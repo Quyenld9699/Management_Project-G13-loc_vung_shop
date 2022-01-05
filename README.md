@@ -3,21 +3,19 @@
 How to run:
 
 ```bash
-npm i
-npm run dev
+docker-compose up
 ```
 
-Open [http://localhost:npm run dev](http://localhost:7502) with your browser to see the result.
+Open [http://localhost:npm run dev](http://localhost:3000) with your browser to see the result.
 
-## Developer
+## Developer Frontend User
 
--   Nguyen Phuc Co
--   Le Dinh Quyen
--   Tran Manh Hung
--   Que Hoai Vu
+-   Le Dinh Quyen - 20176859
+-   Nguyen Phuc Co - 20176706
+-   Nguyen Thi Bich Ngoc - 20176836
 
 ## Git styles
 
--   Create a branch: feature/{name-branch}
+-   Create a branch: {dev_nameStudent}
 -   Commit: {content}
 -   Before commit run: `npm run format` to format code, avoid conflict.
